@@ -11,7 +11,7 @@ class Plant {
         this.data.image.draw(
             view,
             this._xCenter - Math.floor(this.data.image.width / 2),
-            this._yBottom + this.data.image.height,
+            this._yBottom - this.data.image.height,
             onClick
         );
     }
