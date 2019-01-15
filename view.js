@@ -7,6 +7,34 @@ class View {
         this._ctx = this._canvas.getContext("2d");
         this._clickerCtx = this._clicker.getContext("2d");
         this._elements = new Map();
+
+        this.initClickHandlers();
+    }
+
+    initClickHandlers() {
+        var self = this;
+        this._canvas.addEventListener('click', function(e) {
+            var mouseX, mouseY;
+
+            if (e.offsetX) {
+                mouseX = e.offsetX;
+                mouseY = e.offsetY;
+            } else if (e.layerX) {
+                mouseX = e.layerX;
+                mouseY = e.layerY;
+            }
+
+            var d = self._clickerCtx.getImageData(mouseX, mouseY, 1, 1).data,
+                r = d[0],
+                g = d[1],
+                b = d[2],
+                colorKey = "#" + r.toString(16) + g.toString(16) + b.toString(16);
+
+            var clickHandler = self._elements.get(colorKey);
+            if (clickHandler) {
+                clickHandler();
+            }
+        });
     }
 
     drawRectangle(x_left, y_top, width, height, color, clickHandler) {
@@ -48,7 +76,8 @@ class View {
 
     _getRandomColor() {
         var colorMax = 16777215, // #ffffff
-            color = Math.floor(Math.random() * colorMax).toString(16);
+            colorMin = 1, // #000000 is reserved
+            color = (Math.floor(Math.random() * (colorMax - colorMin)) + colorMin).toString(16);
 
         return "#" + color;
     }
