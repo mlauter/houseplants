@@ -5,7 +5,7 @@ class Controller {
         this._input = input;
     }
 
-    function start() {
+    start() {
         // ...
     }
 }
