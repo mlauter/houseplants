@@ -20,9 +20,8 @@ class Controller {
 
         // Draw plants
         this._plants.forEach(plant => {
-            plant.draw(view);
-            plant.onClick(() => {
-                // ...
+            plant.draw(view, () => {
+
             });
         });
     }

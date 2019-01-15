@@ -8,9 +8,7 @@ class View {
     }
 
     drawRectangle(x_left, y_top, width, height, color) {
-        this._ctx.clearRect(x_left, y_top, width, height);
-        this._ctx.fillStyle = color;
-        this._ctx.fillRect(x_left, y_top, width, height);
+        View.drawRectangleImpl(this._ctx, x_left, y_top, width, height, color);
     }
 
     fillBackground(color) {
@@ -18,8 +16,8 @@ class View {
         this._ctx.fillRect(0, 0, this._canvas.width, this._canvas.height);
     }
 
-    drawClickRectangle(x_center, y_bottom, width, height, color) {
-        // todo this is going away
+    static drawRectangleImpl(ctx, x, y, width, height, color) {
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, width, height);
     }
-
 }
