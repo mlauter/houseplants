@@ -5,7 +5,8 @@ class Controller {
         this._input = input;
 
         this._plants = [
-            new Plant(50, 50, 100, 100, 'green'),
+            new Plant(Data.Plants.Aloe, 100, 120),
+            new Plant(Data.Plants.Aloe, 400, 330),
         ];
     }
 
@@ -21,7 +22,7 @@ class Controller {
         // Draw plants
         this._plants.forEach(plant => {
             plant.draw(view, () => {
-
+                console.log("You clicked " + plant.data.name);
             });
         });
     }

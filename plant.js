@@ -1,19 +1,18 @@
 class Plant {
 
-    constructor(width, height, x_center, y_bottom, color) {
-        this._width = width;
-        this._height = height;
+    constructor(data, x_center, y_bottom) {
         this._xCenter = x_center;
         this._yBottom = y_bottom;
-        this._color = color;
+
+        this.data = data;
     }
 
     draw(view, onClick) {
-        view.drawRectangle(
-            this._xCenter - this._width / 2,
-            this._yBottom + this._height,
-            this._width,
-            this._height,
-            this._color);
+        this.data.image.draw(
+            view,
+            this._xCenter - Math.floor(this.data.image.width / 2),
+            this._yBottom + this.data.image.height,
+            onClick
+        );
     }
 }
