@@ -1,9 +1,8 @@
-const canvas = document.getElementsByTagName('canvas')[0],
-      clicker = document.getElementsByTagName('clicker')[0];
+const canvas = document.getElementById('screen'),
+      clicker = document.getElementById('clicker');
 
-const view = new View(canvas, clicker),
-      input = new Input(canvas);
+const view = new View(canvas, clicker);
 
-const controller = new Controller(view, input);
+const controller = new Controller(view);
 
 controller.start();

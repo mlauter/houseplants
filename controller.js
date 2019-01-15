@@ -1,8 +1,7 @@
 class Controller {
 
-    constructor(view, input) {
+    constructor(view) {
         this._view = view;
-        this._input = input;
 
         this._plants = [
             new Plant(Data.Plants.Aloe, 100, 120),
