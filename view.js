@@ -10,11 +10,17 @@ class View {
     }
 
     drawRectangle(x_left, y_top, width, height, color, clickHandler) {
-        var colorKey = this._getUnusedRandomColor();
 
+        // Draw on screen
         View.drawRectangleImpl(this._ctx, x_left, y_top, width, height, color);
-        View.drawRectangleImpl(this._clickerCtx, x_left, y_top, width, height, colorKey);
-        this._elements.set(colorKey, clickHandler);
+
+        // Draw on click map
+        if (clickHandler) {
+            const colorKey = this._getUnusedRandomColor();
+
+            View.drawRectangleImpl(this._clickerCtx, x_left, y_top, width, height, colorKey);
+            this._elements.set(colorKey, clickHandler);
+        }
     }
 
     fillBackground(color) {
