@@ -5,7 +5,7 @@ class Controller {
         this._input = input;
 
         this._plants = [
-            new Plant(50, 50, 'green')
+            new Plant(50, 50, 'green'),
         ];
     }
 

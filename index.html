@@ -1,31 +1,28 @@
+<!doctype html>
 <html>
-    <head>
-        <title>Houseplants</title>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Houseplants</title>
+    <style>
+      body {
+      font-family: "Helvetica";
+      }
 
-        <style>
-            body {
-                font-family: "Helvetica";
-            }
+      #screen {
+      width: 640px;
+      height: 480px;
+      border: 1px solid #999;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="screen" width="640" height="480"></canvas>
+    <canvas id="clicker" with="640" height="480"></canvas>
 
-            #screen {
-                width: 640px;
-                height: 480px;
-                border: 1px solid #999;
-            }
-
-            #clicker {
-                display: none;
-            }
-        </style>
-    </head>
-    <body>
-        <canvas id="screen" width="640" height="480"></canvas>
-        <canvas id="clicker" with="640" height="480"></canvas>
-
-        <script src="plant.js"></script>
-        <script src="input.js"></script>
-        <script src="view.js"></script>
-        <script src="controller.js"></script>
-        <script src="index.js"></script>
-    </body>
+    <script src="plant.js"></script>
+    <script src="input.js"></script>
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
+    <script src="index.js"></script>
+  </body>
 </html>
