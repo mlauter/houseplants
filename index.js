@@ -1,8 +1,9 @@
-let canvas = document.getElementsByTagName('canvas')[0];
+const canvas = document.getElementsByTagName('canvas')[0],
+      clicker = document.getElementsByTagName('clicker')[0];
 
-let view = new View(canvas);
-let input = new Input(canvas);
+const view = new View(canvas, clicker),
+      input = new Input(canvas);
 
-let controller = new Controller(view, input);
+const controller = new Controller(view, input);
 
 controller.start();
