@@ -28,7 +28,7 @@ class View {
                 r = d[0],
                 g = d[1],
                 b = d[2],
-                colorKey = "#" + r.toString(16) + g.toString(16) + b.toString(16);
+                colorKey = "#" + self._toPaddedHex(r) + self._toPaddedHex(g) + self._toPaddedHex(b);
 
             var clickHandler = self._elements.get(colorKey);
             if (clickHandler) {
@@ -45,7 +45,6 @@ class View {
         // Draw on click map
         if (clickHandler) {
             const colorKey = this._getUnusedRandomColor();
-
             View.drawRectangleImpl(this._clickerCtx, x_left, y_top, width, height, colorKey);
             this._elements.set(colorKey, clickHandler);
         }
@@ -87,5 +86,9 @@ class View {
             color = (Math.floor(Math.random() * (colorMax - colorMin)) + colorMin).toString(16);
 
         return "#" + color;
+    }
+
+    _toPaddedHex(i) {
+        return i.toString(16).padStart(2, '0');
     }
 }
