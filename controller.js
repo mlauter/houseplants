@@ -39,6 +39,9 @@ class Controller {
         this._view.drawRectangle(0, 400, 640, 80, 'orange');
 
         // Draw base-level menu buttons
+        (new Button(150, 40, 'blue', 'I like plants')).draw(this._view, 20, 420, () => {
+            console.log("I LIKE PLANTS");
+        });
     }
 
     plantMenu(plant) {

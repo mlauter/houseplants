@@ -51,6 +51,13 @@ class View {
         }
     }
 
+    drawText(x, y, color, font, text) {
+        console.log(x, y, color, font, text);
+        this._ctx.fillStyle = color;
+        this._ctx.font = font;
+        this._ctx.fillText(text, x, y);
+    }
+
     fillBackground(color) {
         this._ctx.fillStyle = color;
         this._ctx.fillRect(0, 0, this._canvas.width, this._canvas.height);
