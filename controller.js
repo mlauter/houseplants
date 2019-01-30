@@ -15,11 +15,11 @@ class Controller {
         const background = new Background();
 
         const aloe1 = new Plant(Data.Plants.Aloe, 100, 120, () => {
-            console.log("aloe 1");
+            self.plantMenu(aloe1);
         });
 
         const aloe2 = new Plant(Data.Plants.Aloe, 400, 330, () => {
-            console.log("aloe 2");
+            self.plantMenu(aloe2);
         });
 
         background.register(this._scene);
@@ -45,22 +45,27 @@ class Controller {
     dayMenu() {
         console.log("dayMenu");
 
-        // Clear menu background
-        this._view.drawRectangle(0, 400, 640, 80, 'orange');
-
         // Draw base-level menu buttons
-        (new Button(150, 40, 'blue', 'I like plants')).draw(this._view, 20, 420, () => {
-            console.log("I LIKE PLANTS");
-        });
+        const button = new Button(20, 420, 150, 40, 'blue', 'I like plants');
+
+        button.register(this._scene);
+
+        this._scene.render();
+
+        button.unregister(this._scene);
     }
 
     plantMenu(plant) {
         console.log("plantMenu", plant.data.name);
 
-        // Clear menu background
-        this._view.drawRectangle(0, 400, 640, 80, 'orange');
-
         // Draw plant-level menu buttons
+        const button = new Button(200, 420, 150, 40, 'yellow', 'i AM A PLTN');
+
+        button.register(this._scene);
+
+        this._scene.render();
+
+        button.unregister(this._scene);
     }
 
     endDay() {
