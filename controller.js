@@ -2,15 +2,32 @@ class Controller {
 
     constructor(view) {
         this._view = view;
+        this._scene = new Scene(this._view);
 
-        this._plants = [
-            new Plant(Data.Plants.Aloe, 100, 120),
-            new Plant(Data.Plants.Aloe, 400, 330),
-        ];
+        this._plants = [];
     }
 
     start() {
         console.log("start");
+
+        const self = this;
+
+        const background = new Background();
+
+        const aloe1 = new Plant(Data.Plants.Aloe, 100, 120, () => {
+            console.log("aloe 1");
+        });
+
+        const aloe2 = new Plant(Data.Plants.Aloe, 400, 330, () => {
+            console.log("aloe 2");
+        });
+
+        background.register(this._scene);
+        aloe1.register(this._scene);
+        aloe2.register(this._scene);
+
+        this._plants.push(aloe1);
+        this._plants.push(aloe2);
 
         this.startDay();
     }
@@ -20,14 +37,7 @@ class Controller {
 
         const self = this;
 
-        // Draw background
-        this._view.drawRectangle(0, 0, 640, 400, 'brown');
-
-        this._plants.forEach(plant => {
-            plant.draw(view, () => {
-                self.plantMenu(plant);
-            });
-        });
+        this._scene.render();
 
         this.dayMenu();
     }
