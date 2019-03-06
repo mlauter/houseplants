@@ -1,12 +1,13 @@
 class Button {
 
-    constructor(x, y, width, height, color, text) {
+    constructor(x, y, width, height, color, text, on_click) {
         this._x = x;
         this._y = y;
         this._width = width;
         this._height = height;
         this._color = color;
         this._text = text;
+        this._onClick = on_click;
     }
 
     register(scene) {
@@ -22,7 +23,7 @@ class Button {
               font = (this.height - margin * 2) + "px sans-serif";
 
         view.drawRectangle(
-            this._x, this._y, this._width, this._height, this._color);
+            this._x, this._y, this._width, this._height, this._color, this._onClick);
 
         view.drawText(
             this._x + margin,

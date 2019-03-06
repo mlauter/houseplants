@@ -2,28 +2,34 @@ class Scene {
 
     constructor(view) {
         this._view = view;
-        this._objects = [];
+        this._objects = new Map();
     }
 
     addObject(object) {
-        this._objects.push(object);
+        const key = this.getId();
+        this._objects.set(key, object);
 
-        return this._objects.length - 1;
+        return key;
     }
 
     removeObject(id) {
-        this._objects.splice(id, 1);
+        this._objects.delete(id);
     }
 
     render() {
         const self = this;
 
-        this._objects.sort((a, b) => {
+        let objects = [ ...this._objects.values() ];
+        objects.sort((a, b) => {
             return a.zIndex() - b.zIndex();
         });
 
-        this._objects.forEach(object => {
+        objects.forEach(object => {
             object.draw(self._view);
         });
+    }
+
+    getId() {
+        return Math.floor(Math.random() * Math.floor(Number.MAX_SAFE_INTEGER));
     }
 }

@@ -58,14 +58,83 @@ class Controller {
     plantMenu(plant) {
         console.log("plantMenu", plant.data.name);
 
-        // Draw plant-level menu buttons
-        const button = new Button(200, 420, 150, 40, 'yellow', 'i AM A PLTN');
+        const self = this;
 
-        button.register(this._scene);
+        // Draw plant-level menu buttons
+        const buttons = [
+            new Button(20, 420, 150, 40, 'purple', 'Water', () => {
+                self.waterMenu(plant);
+            }),
+            new Button(190, 420, 150, 40, 'purple', 'Food', () => {
+                self.foodMenu(plant);
+            }),
+            new Button(360, 420, 150, 40, 'purple', 'Done', () => {
+                self.dayMenu();
+            }),
+        ];
+
+        buttons.forEach(button => {
+            button.register(self._scene);
+        });
 
         this._scene.render();
 
-        button.unregister(this._scene);
+        buttons.forEach(button => {
+            button.unregister(self._scene);
+        });
+    }
+
+    waterMenu(plant) {
+        console.log("waterMenu", plant.data.name);
+
+        const self = this;
+
+        const buttons = [
+            new Button(20, 440, 45, 20, 'blue', '', () => {
+                self.plantMenu(plant);
+            }),
+            new Button(70, 420, 45, 40, 'blue', '', () => {
+                self.plantMenu(plant);
+            }),
+            new Button(120, 400, 45, 60, 'blue', '', () => {
+                self.plantMenu(plant);
+            }),
+        ];
+
+        buttons.forEach(button => {
+            button.register(self._scene);
+        });
+
+        this._scene.render();
+
+        buttons.forEach(button => {
+            button.unregister(self._scene);
+        });
+    }
+
+    foodMenu(plant) {
+        console.log("foodMenu", plant.data.name);
+
+        const self = this;
+
+        const buttons = [
+            new Button(190, 440, 70, 20, 'orange', '', () => {
+                self.plantMenu(plant);
+            }),
+            new Button(270, 420, 70, 40, 'orange', '', () => {
+                self.plantMenu(plant);
+            }),
+        ];
+
+        buttons.forEach(button => {
+            button.register(self._scene);
+        });
+
+        this._scene.render();
+
+        buttons.forEach(button => {
+            button.unregister(self._scene);
+        });
     }
 
     endDay() {
