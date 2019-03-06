@@ -5,7 +5,7 @@ class Background {
     }
 
     draw(view) {
-        view.drawRectangle(0, 0, 640, 480, 'brown');
+        view.drawRectangle(0, 0, 640, 480, '#f8efef');
     }
 
     zIndex() {

@@ -37,24 +37,36 @@ class View {
         });
     }
 
-    drawRectangle(x_left, y_top, width, height, color, clickHandler) {
+    drawRectangle(x, y, width, height, color, clickHandler) {
 
         // Draw on screen
-        View.drawRectangleImpl(this._ctx, x_left, y_top, width, height, color);
+        View.drawRectangleImpl(this._ctx, x, y, width, height, color);
 
         // Draw on click map
         if (clickHandler) {
             const colorKey = this._getUnusedRandomColor();
-            View.drawRectangleImpl(this._clickerCtx, x_left, y_top, width, height, colorKey);
+            View.drawRectangleImpl(this._clickerCtx, x, y, width, height, colorKey);
             this._elements.set(colorKey, clickHandler);
         }
     }
 
     drawText(x, y, color, font, text) {
-        console.log(x, y, color, font, text);
         this._ctx.fillStyle = color;
         this._ctx.font = font;
         this._ctx.fillText(text, x, y);
+    }
+
+    drawImage(x, y, width, height, image, clickHandler) {
+
+        // Draw image on screen
+        this._ctx.drawImage(image, x, y, width, height);
+
+        // Draw rectangle on click map
+        if (clickHandler) {
+            const colorKey = this._getUnusedRandomColor();
+            View.drawRectangleImpl(this._clickerCtx, x, y, width, height, colorKey);
+            this._elements.set(colorKey, clickHandler);
+        }
     }
 
     fillBackground(color) {

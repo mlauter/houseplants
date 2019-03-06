@@ -14,20 +14,20 @@ class Controller {
 
         const background = new Background();
 
-        const aloe1 = new Plant(Data.Plants.Aloe, 100, 120, () => {
-            self.plantMenu(aloe1);
+        const aloe = new Plant(Data.Plants.Aloe, 100, 120, () => {
+            self.plantMenu(aloe);
         });
 
-        const aloe2 = new Plant(Data.Plants.Aloe, 400, 330, () => {
-            self.plantMenu(aloe2);
+        const dracaena = new Plant(Data.Plants.Dracaena, 400, 330, () => {
+            self.plantMenu(dracaena);
         });
 
         background.register(this._scene);
-        aloe1.register(this._scene);
-        aloe2.register(this._scene);
+        aloe.register(this._scene);
+        dracaena.register(this._scene);
 
-        this._plants.push(aloe1);
-        this._plants.push(aloe2);
+        this._plants.push(aloe);
+        this._plants.push(dracaena);
 
         this.startDay();
     }
